@@ -2,11 +2,14 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 
 import { REQUEST_API_DATA, receiveApiData } from './actions'
 import { fetchData } from './api'
+import { REQUEST_BALANCE, receiveBalance } from './actions'
+import { fetchProfile } from './profile'
 
 function* getApiData(action) {
    try {
-      const data = yield call(fetchData);
-      yield put(receiveApiData(data))
+      const balance = yield call(fetchData);
+      console.log(balance)
+      yield put(receiveApiData(balance))
    } catch (e) {
       console.log(e)
    }

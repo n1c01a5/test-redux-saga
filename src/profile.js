@@ -1,7 +1,7 @@
 import getWeb3 from './utils/getWeb3'
 import unit from 'ethjs-unit'
 
-export const fetchData = async () => {
+export const fetchProfile = async () => {
   try {
     const web3Instance = await getWeb3()
 

@@ -9,25 +9,11 @@ class Home extends PureComponent {
     this.props.requestApiData();
   }
 
-  person = (x, i) =>
-    <div key={x.id.value}>
-      <h1>
-        {x.gender}
-      </h1>
-      <h1>
-        {x.name.first}
-      </h1>
-      <h1>
-        {x.name.last}
-      </h1>
-      <img src={x.picture.medium} alt='profile' />
-    </div>;
-
   render() {
-    const { results = [] } = this.props.data;
-    return results.length
+    const { data } = this.props
+    return data
       ? <h1>
-          {results.map(this.person)}
+          {data}
         </h1>
       : <h1>loading...</h1>;
   }
