@@ -1,27 +1,28 @@
-import React, { PureComponent } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { PureComponent } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-import { requestApiData } from './actions';
+import { requestBalance } from './actions'
+import { requestApiData } from './actions'
 
 class Home extends PureComponent {
   componentDidMount() {
-    this.props.requestApiData();
+    this.props.requestBalance()
   }
 
   render() {
-    const { data } = this.props
-    return data
+    const { balance } = this.props
+    return balance
       ? <h1>
-          {data}
+          {balance}
         </h1>
       : <h1>loading...</h1>;
   }
 }
 
-const mapStateToProps = state => ({ data: state.data });
+const mapStateToProps = state => ({ balance: state.balance })
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ requestApiData }, dispatch);
+  bindActionCreators({ requestBalance }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

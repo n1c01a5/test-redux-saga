@@ -1,15 +1,7 @@
-import getWeb3 from './utils/getWeb3'
-import unit from 'ethjs-unit'
-
 export const fetchData = async () => {
   try {
-    const web3Instance = await getWeb3()
-
-    const accounts = await web3Instance.accounts()
-
-    const balance = await web3Instance.getBalance(accounts[0])
-
-    return unit.fromWei(balance, 'ether')
+    const response = await fetch('https://randomuser.me/api')
+    return await response.json()
   } catch (e) {
     console.log(e)
   }

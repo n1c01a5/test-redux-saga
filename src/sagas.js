@@ -5,18 +5,17 @@ import { fetchData } from './api'
 import { REQUEST_BALANCE, receiveBalance } from './actions'
 import { fetchProfile } from './profile'
 
-function* getApiData(action) {
+function* getBalance(action) {
    try {
-      const balance = yield call(fetchData);
-      console.log(balance)
-      yield put(receiveApiData(balance))
+      const balance = yield call(fetchProfile)
+      yield put(receiveBalance(balance))
    } catch (e) {
       console.log(e)
    }
 }
 
 function* mySaga() {
-  yield takeLatest(REQUEST_API_DATA, getApiData);
+  yield takeLatest(REQUEST_BALANCE, getBalance)
 }
 
-export default mySaga;
+export default mySaga
